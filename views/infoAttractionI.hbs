@@ -1,6 +1,7 @@
 <!-- This page is loaded in an iframe on the slider page. As such we do not need the navbar or footer and so have a fully featured page for this context alone-->
 <!DOCTYPE html>
 <html>
+
 <head>
     <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css' />
     <link rel="stylesheet" href="/stylesheets/style.css">
@@ -11,28 +12,36 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="/javascripts/alerts.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     {{!-- MapBox JS/CSS --}}
     <script src='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.js'></script>
     <link href='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.css' rel='stylesheet' />
 
 </head>
+
 <body>
-    <div class="destination_details_info"> <!-- styling class-->
-        <div class="container"> <!-- bootstrap container -->
+    <div class="destination_details_info">
+        <!-- styling class-->
+        <div class="container">
+            <!-- bootstrap container -->
             <div class="row justify-content-center">
-                <div class="col-lg-12 col-md-12"> <!-- full width -->
-                    <div class="destination_banner_wrap overlay" style="background-image: url({{attraction.photo}}); vertical-align: middle;">
+                <div class="col-lg-12 col-md-12">
+                    <!-- full width -->
+                    <div class="destination_banner_wrap overlay"
+                        style="background-image: url({{attraction.photo}}); vertical-align: middle;">
                         <div class="destination_text text-center">
                             <h3>{{ attraction.name }}
                             </h3>
                         </div>
                     </div>
 
-                    <div class="destination_info"> <!-- Styling class-->
+                    <div class="destination_info">
+                        <!-- Styling class-->
                         <h3>Description</h3>
                         {{{attraction.location.longDescription}}}
                     </div>
-                    <div class="button-group-area mt-40"> <!-- Top margin of 40-->
+                    <div class="button-group-area mt-40">
+                        <!-- Top margin of 40-->
                         <a href="../../city/info/{{attraction.citySlug}}" class="genric-btn primary circle">See City</a>
                         <a href="https://en.wikipedia.org/wiki/{{attraction.wikiSlug}}"
                             class="genric-btn link circle">Read More</a>
@@ -43,21 +52,25 @@
                         </div>
                     </center>
 
-                    {{#if_eq ratingsQuantity 0}}<br>{{else}}<!-- handlebars helper -->
+                    {{#if_eq ratingsQuantity 0}}<br>{{else}}
+                    <!-- handlebars helper -->
                     <br>
                     <p>{{attraction.ratingsAverage}}% out of {{attraction.ratingsQuantity}} people liked this
                         attraction.</p> <!-- Statistics on the attraction-->
                     {{/if_eq}}
                     <br>
-                    <div class="card border-0 p-10"> <!-- Card here for easier styling-->
+                    <div class="card border-0 p-10">
+                        <!-- Card here for easier styling-->
                         <h2>Comment Section</h2>
                         {{#if user}}
                         <h4> Add a Comment</h4>
                         <form class='form-user-comment'>
                             <div class="row">
-                                <textarea class='form-control comment-box col-md-8 ml-4 z-depth-2' rows="5" style="height:100%;" maxlength="280" placeholder="Max 280 Characters!"></textarea>
+                                <textarea class='form-control comment-box col-md-8 ml-4 z-depth-2' rows="5"
+                                    style="height:100%;" maxlength="280" placeholder="Max 280 Characters!"></textarea>
                             </div>
-                            <button class=' button-post-user-comment genric-btn primary circle col-md-3 ml-2 mt-auto'>Submit</button>
+                            <button
+                                class=' button-post-user-comment genric-btn primary circle col-md-3 ml-2 mt-auto'>Submit</button>
                         </form>
                         {{else}}
                         <p>Log in to post a comment</p>
@@ -78,4 +91,5 @@
 <!-- Below is for sending requests and for authentication-->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
 <script type="text/javascript" src="/javascripts/auth.js"></script>
+
 </html>
