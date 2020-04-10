@@ -1,0 +1,65 @@
+{{!-- MapBox JS/CSS --}}
+<script src='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.js'></script>
+<link href='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.css' rel='stylesheet' />
+
+<body>
+    <br><br>
+    <div class="text-center infoA"> <!-- Styled in the stylesheet using the infoA class-->
+        <h3>{{ attraction.name }}</h3>
+    </div>
+    
+
+    <div class="destination_details_info"> <!-- stylesheet -->
+        <div class="container"> 
+            <div class="row justify-content-center">
+                <div class="col-lg-8 col-md-9"> <!--elements will take up 75% of the width on a medium sized screen using bootstrap -->
+                    <div class="destination_info">
+                        <h3>Description</h3>
+                        {{{attraction.location.longDescription}}}
+                    </div>
+                    <div class="button-group-area mt-40"> <!-- margin top of 40 -->
+                        <a href="../../city/info/{{attraction.citySlug}}" class="genric-btn primary circle">See City</a>
+                        <a href="https://en.wikipedia.org/wiki/{{attraction.wikiSlug}}"
+                            class="genric-btn link circle">Read More</a>
+                    </div>
+                    <center>
+                        <div id="map" data-location="{{JSON2string attraction.location}}" style="height:300px; margin-top:20px;" data-name='{{attraction.name}}'>
+                        </div>
+                    </center>
+
+                    {{#if_eq ratingsQuantity 0}}<br>{{else}} <!-- handlebars helper -->
+                    <br>
+                    <p>{{attraction.ratingsAverage}}% out of {{attraction.ratingsQuantity}} people liked this
+                        attraction.</p>
+                    {{/if_eq}}
+                    <br>
+                    <div class="card border-0 p-10"> <!-- Card for easier styling-->
+                        <h2>Comment Section</h2>
+                        {{#if user}}
+                        <h4> Add a Comment</h4>
+                        <form class='form-user-comment'>
+                            <div class="row">
+                                <textarea class='form-control comment-box col-md-8 ml-4 z-depth-2' rows="5"
+                                    style="height:100%;" maxlength="280" placeholder="Max 280 Characters!"></textarea> <!-- textbox for the comments -->
+                                <button
+                                    class='form-control button-post-user-comment genric-btn primary circle ml-2 col-md-2 mt-auto'>Submit</button> 
+                            </div>
+
+                        </form>
+                        {{else}}
+                        <p>Log in to post a comment</p>
+                        {{/if}}
+                    </div>
+                    <br>
+
+                    <div class='comments-results' data-aid='{{attraction._id}}' data-uid='{{user._id}}'
+                        data-urole='{{user.role}}'></div> <!-- comments are inserted here -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<!-- Scripts for comments and maps -->
+<script type="text/javascript" src="/javascripts/mapAttractions.js"></script>
+<script type="text/javascript" src="/javascripts/comments.js"></script>

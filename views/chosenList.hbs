@@ -1,0 +1,110 @@
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init();
+</script>
+
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+{{!-- MapBox JS/CSS --}}
+<script src='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.js'></script>
+<link href='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.css' rel='stylesheet' />
+
+<div class="destination_banner_wrap overlay" style="background-image: url({{city.infoPic}})">
+    <div class="destination_text text-center">
+        <h3 class='cityListTitle' data-userid='{{user._id}}' data-cityid='{{city._id}}'>My {{city.name}}</h3>
+    </div>
+</div>
+
+
+<div class="container">
+    <h1>My Attractions</h1>
+    <div class="row ml-1 justify-content-between">
+        <div class="col-3">
+            <h3>Name</h3>
+        </div>
+        <div class="col-3">
+            <p>Address</p>
+        </div>
+        <div class="col-2">
+            <p>Type</p>
+        </div>
+        <div class="col-1">
+            <p>Info</p>
+        </div>
+        <div class="col-1">
+            <p>Location</p>
+        </div>
+        <div class="col-1" id='distanceTitle' style='display: none'>
+            <p>Distance</p>
+        </div>
+        <div class="col-1">
+            <p>Delete</p>
+        </div>
+    </div>
+    {{!-- <div class='results'></div> --}}
+    <!-- FOR -->
+    {{#each attractions}}
+    <div class="card m-2" data-aos="fade-in" data-aos-once='true' id='attr-{{this._id}}'>
+        <div class="row mt-3 ml-2 mb-3 justify-content-between cli">
+            <div class="col-3">
+                <h3>{{this.name}}</h3>
+            </div>
+            <div class="col-3">
+                <p>{{this.location.address}}</p>
+            </div>
+            <div class="col-2">
+                <p>{{this.aType}}</p>
+            </div>
+
+            <div class="col-1" id='distance-attr-{{this._id}}' style='display:none;'></div>
+
+            <div class="col-1">
+                <a href="/attraction/info/{{this.slug}}" style="hover"><i class="fa fa-info-circle fa-2x"></i></a>
+            </div>
+
+            <div class="col-1">
+                <!-- onclick function here to bring up an alert maybe containing the long and lat or copy them to clipboard-->
+                <a onclick="copyCoordinates('{{this.location.coordinates}}')"><i class="fa fa-map-marker fa-2x"></i></a>
+            </div>
+
+            <div class="col-1">
+                <!-- onclick function in here to first bring up an "Are you sure?" before deletion -->
+                <a onclick="delUserAttr('{{this._id}}');"><i class="fa fa-trash fa-2x"></i></a>
+            </div>
+        </div>
+    </div>
+
+    {{/each}}
+    <!-- End -->
+    <br>
+
+</div deiv>
+<!-- Maybe a map down here then? -->
+<div class = "container">
+    <form class='userLocation'>
+        <div class = "row justify-content-center">
+            <div class="justify-content-center">
+                <p>Enter your location below by typing in your coordinates to find out how far you are from these attractions!</p>
+            </div>
+        </div>
+        <div class = "row justify-content-center mt-2">
+            <p>Please note we do not store your coordinates. Please enter your coordinates with an accuracy of up to 0.000001.</p>
+        </div>
+        <div class = "row justify-content-center mt-2">
+            <label for="latitude">Latitude: </label>
+            <input class="ml-1"type="number" step="0.000001" name='latitude' id="latitude">
+            <label class = "ml-2"for="longitude">Longitude: </label>
+            <input class="ml-1" type="number" step="0.000001" name='longitude' id="longitude">
+            <button class="btn btn-warning ml-2" id='button-add-location'>Submit</button>
+        </div>
+    </form>
+<center>
+    <div id="map" data-locations="{{JSON2string attractions}}" data-center="{{JSON2string city.location}}"
+        style="width: 730px; height:350px; margin-top:20px;">
+    </div>
+</center>
+</div>
+<script type="text/javascript" src="/javascripts/listMap.js"></script>
+<script type="text/javascript" src="/javascripts/myList.js"></script>
+
+<br>

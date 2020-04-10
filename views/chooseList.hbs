@@ -1,0 +1,47 @@
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init();
+</script>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+
+<div class="destination_banner_wrap overlay slider_bg_1 overlay" style=" background-image: url('/images/banner/banner4.jpg');">
+    <div class="destination_text text-center">
+        <h3>My Lists</h3>
+    </div>
+</div>
+
+<div class="popular_places_area">
+    <div class="container">
+        <div class="row">
+            {{noCities}}
+            {{#each cities}}
+            <div class="col-lg-4 col-md-6">
+                <div data-aos="fade-in" data-aos-once="true" class="single_place">
+                    <div class="thumb">
+                        <img src="{{this.thumbnailPic}}" alt="">
+
+                    </div>
+                    <div class="place_info">
+                        <a href="/list/{{this._id}}">
+                            <h3>{{this.name}}</h3>
+                        </a>
+                        <p>
+                            {{this.location.country}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+
+        {{!-- <div class="row">
+            <div class="col-lg-12">
+                <div class="more_place_btn text-center">
+                    <a onclick="" class="boxed-btn4">Next Page</a>
+                    <!--If we're doing more cities have a function to load in more -->
+                </div>
+            </div>
+        </div> --}}
+    </div>
+</div>

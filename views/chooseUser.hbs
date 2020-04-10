@@ -1,0 +1,80 @@
+<div class="container-fluid">
+    <div class="w-75 mx-auto">
+        <div class="card">
+            <div class="card-header">
+                <h2>Select a User</h2>
+            </div>
+            ​
+            <form class="filter-edit-users">
+
+                <div class="form-group row mt-2">
+                    <!-- I left this -->
+                    <label for="sortBy" class="col-lg-0.5 col-form-label form-control-label ml-4">Sort By</label>
+                    <div class="col-lg-2">
+                        <select class="form-control sortBy-option" id='sortBy' name='sortBy'>
+                            <!-- have default alphabetical, add more if you want -->
+                            <option>Alphabetical</option>
+                            <option>By Creation Date</option>
+                        </select>
+                    </div>
+
+                    <label for="limit-form-data" class="col-lg-0.5 col-form-label form-control-label ml-4">Number per
+                        page:</label>
+                    <div class="col-lg-2">
+                        <input class="form-control" id='limit-form-data' type="number" min='1'
+                            placeholder="Default is 10">
+                    </div>
+
+                    <label for="page-form-data" class="col-form-label form-control-label ml-2">Page number:</label>
+                    <div class="col-lg-2">
+                        <input class="form-control" id='page-form-data' type="number" min='1'
+                            placeholder="Default is 1">
+                    </div>
+
+                </div>
+
+
+                <div class="form-group row mt-2">
+
+                    <label for="searchUsername" class="col-lg-0.5 col-form-label form-control-label ml-4">Search for
+                        username</label>
+                    <div class="col-lg-2">
+                        <input type="text" class="form-control" id="searchUsername" name="searchUsername">
+                    </div>
+
+                    <label for="searchEmail" class="col-form-label form-control-label ml-2">Search for email</label>
+                    <div class="col-lg-3">
+                        <input type="text" class="form-control" id="searchEmail" name="searchEmail">
+                    </div>
+                    <button class="button-save-att-data boxed-btn4 ml-2" value="Filter">Filter</button>
+
+
+                    ​
+                </div>
+            </form>
+
+            <div class="row">
+                <div class="col-md-3">
+                    <h5>Name</h5>
+                </div>
+                <div class="col-md-2">
+                    <p>Username</p>
+                </div>
+                <div class="col-md-3">
+                    <p>Email Address</p>
+                </div>
+                <div class="col-md-2">
+                    <p>Location</p>
+                </div>
+            </div>
+
+            ​
+            <div class='results cli'></div>
+
+
+
+            ​
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="/javascripts/user.js"></script>

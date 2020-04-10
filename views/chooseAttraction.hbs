@@ -1,0 +1,78 @@
+<div class="container-fluid">
+    <div class="w-75 mx-auto">
+        <div class="card">
+            <div class="card-header">
+                <h2>Select an Attraction</h2>
+            </div>
+            ​
+            <form class="filter-edit-attractions">
+                <div class="form-group row mt-2">
+                    <label for="city" class="col-lg-0.5 col-form-label form-control-label ml-4">City List Select:</label>
+                    <div class="col-lg-3">
+                        <select class="form-control city-option" id='name' name='name'>
+                            <option>All</option>
+
+                            {{#each cities}}
+                            <option>{{this.name}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+                    ​
+                    <label for="aType" class="col-form-label form-control-label ml-2">aType List Select:</label>
+                    <div class="col-lg-3">
+                        <select class="form-control atype-option" id='aType' name='aType'>
+                            <option>All</option>
+                            <option>Brewery</option>
+                            <option>Pub</option>
+                            <option>Viewpoint</option>
+                            <option>Monument</option>
+                            <option>Gallery</option>
+                            <option>Museum</option>
+                            <option>Beach</option>
+                            <option>Park</option>
+                            <option>Zoo</option>
+                            <option>Nature</option>
+                            <option>Sport</option>
+                            <option>Venue</option>
+                            <option>Statue</option>
+                            <option>Historical</option>
+                            <option>Religious</option>
+                        </select>
+                    </div>
+                    <button class="button-save-att-data boxed-btn4 ml-2" value="Filter">Filter</button>
+                </div>
+                <div class="form-group row mt-2">
+                    <label for="number" class="col-lg-0.5 col-form-label form-control-label ml-4">Number per page:</label>
+                    <div class="col-lg-3">
+                        <input id='limit-form-data' type="number" min='1'placeholder="Default: 10">
+                    </div>
+                    <label for="number1" class="col-form-label form-control-label ml-2">Page Number:</label>
+                    <div class ="col-lg-3">
+                        <input id='page-form-data' type="number" min='1' placeholder="Default: 1">
+                    </div>
+                </div>
+            </form>
+
+            <div class="row">
+                <div class="col-md-2">
+                    <h5>Name</h5>
+                </div>
+                <div class="col-md-2">
+                    <h5>aType</h5>
+                </div>
+                <div class="col-md-4">
+                    <h5>Address</h5>
+                </div>
+                <div class="col-md-2">
+                    <h5>City</h5>
+                </div>
+            </div>
+
+            ​<div class='results cli'></div>
+            <!-- Start of for-->
+            ​
+            <!-- End of for-->
+        ​</div>
+    </div>
+</div>
+<script type="text/javascript" src="/javascripts/attraction.js"></script>

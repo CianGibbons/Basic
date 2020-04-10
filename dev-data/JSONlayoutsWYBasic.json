@@ -1,0 +1,67 @@
+//Cities
+//City description can include html paragraphs but this is the only field that accepts html across the board
+//Note: Will probaby remove the ability to insert the html tags on description for security reasons
+{
+	"name": "",
+	"wikiSlug": "",
+	"infoPic": "",
+	"thumbnailPic": "",
+	"description":"",
+	"location": {
+		"type": "Point",
+		"coordinates": [,],
+		"address": "",
+		"country": ""
+	}
+},
+
+
+//Attraction
+{
+	"name": "",
+	"city": "",
+	"wikiSlug": "",
+	"aType": "",
+	"photo": "",
+	"location": {
+		"type": "Point",
+		"coordinates":[,],
+		"address": "",
+		"longDescription": "",
+		"shortDescription": ""
+	}
+},
+
+
+//Users
+//The role field is optional for this model, only time you would use it is to make an admin account.
+//location field in this model is just a country of origin type of thing.
+{
+	"name":"",
+	"username":"",
+	"email":"",
+	"photo":"",
+	"role":"",
+	"password":"",
+	"passwordConfirm":"",
+	"DOB":"",
+	"location":""
+},
+
+
+//Comments
+{
+	"attraction": "",
+	"user": "",
+	"comment": ""
+},
+
+//UserAttractions
+// liked is either a 0 or a 1
+// the other two are id's
+{
+	"attraction":"",
+	"user":"",
+	"liked":0
+}
+

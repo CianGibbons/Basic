@@ -1,0 +1,103 @@
+<script type="text/javascript"> <!-- Simple script to change the users date object to a string as well as display when their password was last changed by also converting that object to a string-->
+    $(document).ready(function () {
+        let dob = new Date("{{thisuser.DOB}}");
+        let n = dob.toLocaleString('en-IE', { day: '2-digit', month: 'long', year: 'numeric' });
+        let dobData = "<p>" + n + "</p>";
+        $('#dobdiv').append(dobData);
+
+        let dpr = new Date("{{thisuser.passwordChangedAt}}");
+        let a = dpr.toLocaleString('en-IE');
+        let dprData = "<p>" + a + "</p>";
+        $('#passDateDiv').append(dprData);
+
+    })
+</script>
+
+<div class="container-fluid"> 
+    <div class="w-75 mx-auto"> <!-- width of 75% centered across all screen sizes -->
+        <div class="card">
+            <div class="card-header">
+                <h2>Edit a User</h2>
+            </div>
+            ​<form class='form-edit-user'>
+                <div class="form-editUser">
+                    <div class="row">
+                        <h2 class="col-lg-9 ml-2" id='currentUserIndicator'>{{thisuser.username}}</h2>
+                        <button class="button-save-data boxed-btn4" value="Save Changes">Save Changes</button>
+                    </div>
+
+                    <div class="form-group row mt-3">
+
+                        <label for='name' class=" col-form-label form-control-label ml-4">Name:</label>
+                        <div class="col-lg-5">
+                            <input class="form-control" id='name' type='text' value='{{thisuser.name}}' name='name'
+                                required>
+                        </div>
+                        ​
+                        <label for='username' class="col-form-label form-control-label ml-2">Username:</label>
+                        <div class="col-lg-5">
+                            <input class="form-control" id='username' type='text' value='{{thisuser.username}}'
+                                name='username' required>
+                        </div>
+                        ​
+                    </div>
+
+                    <div class="form-group row">
+
+                        <label for='location' class="col-form-label form-control-label ml-4">Location:</label>
+                        <div class="col-lg-3">
+                            <input class="form-control" id='location' type='text' value='{{thisuser.location}}'
+                                name="location" required>
+                        </div>
+
+                        <label for='photo' class=" col-form-label form-control-label ml-2">Revert Profile
+                            Picture to Default:</label>
+                        <div class="col-lg-5 ">
+                            <input class="form-control" type='checkbox' id='photo' name='photo'>
+                        </div>
+
+                    </div>
+
+                    <div class="form-group row">
+
+                        <label for='email' class="col-form-label form-control-label ml-4">Change email address:</label>
+                        <div class="col-lg-5 ">
+                            <input class="form-control" type='email' id='email' name='email' value='{{thisuser.email}}'
+                                required>
+                        </div>
+
+                        <label for='role' class=" col-form-label form-control-label ml-2">Role:</label>
+                        <div class="col-lg-3">
+                            <input class="form-control" id='role' type='text' value='{{thisuser.role}}' name='role'
+                                required>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+            <h5 class="ml-2"> Extra info:</h5>
+
+            <div class="row ml-1">
+                <div class="col-lg-4">
+                    <h6>Date of Birth: </h6>
+                </div>
+                <div id="dobdiv"></div>
+            </div>
+
+            <div class="row ml-1">
+                <div class="col-lg-4">
+                    <h6>Date & Time of last Password Reset: </h6>
+                </div>
+                <div id="passDateDiv"></div>
+            </div>
+
+            <div class="column form-group w-100">
+                <label for='results'>Results:</label>
+                <div id='results'
+                    style='border-radius:10px; border:1px solid;background-color: white; min-height:100px'>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="/javascripts/user.js"></script> <!-- Script for getting and updating the user info -->

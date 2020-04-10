@@ -1,0 +1,301 @@
+<style> <!-- put into stylesheet on Thursday!! -->
+
+body {
+  background: #F7FAFD;
+}
+
+.slider {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  opacity: 0;
+  transition: opacity 0.1s ease-in-out;
+  overflow-x: hidden;
+}
+
+.loaded.slider {
+  opacity: 1;
+}
+
+.slider-status {
+  position: absolute;
+  top: 50%;
+  margin-top: -30px;
+  z-index: 2;
+  width: 100%;
+  text-align: center;
+  pointer-events: none;
+}
+
+.slider-status i {
+  font-size: 100px;
+  opacity: 0;
+  transform: scale(0.3);
+  transition: all 0.2s ease-in-out;
+  position: absolute;
+  width: 100px;
+  margin-left: -50px;
+}
+
+.slider-love.fa-heart {
+  opacity: 0.7;
+  transform: scale(1);
+}
+
+.slider-nope .fa-remove {
+  opacity: 0.7;
+  transform: scale(1);
+}
+
+.slider-cards {
+  padding-top: 725px; 
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  z-index: 1;
+  border-radius: 1%;
+  box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.1);
+}
+
+.slider-card {
+  display: inline-block;
+  width: 85vw;
+  max-width: 550px;
+  height: 70vh;
+  background: #FFFFFF;
+  padding-bottom: 50px;
+  border-radius: 10px;
+  overflow: hidden;
+  position: absolute;
+  will-change: transform;
+  transition: all 0.3s ease-in-out;
+  cursor: -webkit-grab;
+  cursor: -moz-grab;
+  cursor: grab;
+  max-height: 700px;
+}
+
+.moving.slider-card {
+  transition: none;
+  cursor: -webkit-grabbing;
+  cursor: -moz-grabbing;
+  cursor: grabbing;
+}
+
+.slider-card img {
+  max-width: 100%;
+  pointer-events: none;
+  width: 500px;
+  height: 400px;
+  border-radius: 1%;
+  box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.1);
+  object-fit: cover;
+}
+
+.slider-card h3 {
+  margin-top: 32px;
+  font-size: 32px;
+  padding: 0 16px;
+  pointer-events: none;
+}
+
+.slider-card p {
+  margin-top: 24px;
+  font-size: 20px;
+  padding: 0 16px;
+  pointer-events: none;
+
+}
+
+.card {
+  width: 500px;
+  height: 500px;
+  border-radius: 1%;
+  box-shadow: 0px 4px 4px 4px rgba(0,0,0,0.1);
+  object-fit: cover;
+}
+
+.slider-buttons {
+  flex: 0 0 100px;
+  text-align: center;
+  padding-top: 20px;
+}
+
+.slider-buttons button {
+  border-radius: 50%;
+  line-height: 60px;
+  width: 60px;
+  border: 0;
+  background: #122F1E;
+  display: inline-block;
+  margin: 0 8px;
+}
+
+.slider-buttons button:focus {
+  outline: 0;
+}
+.btnnn:hover {
+  background-color: red;
+
+}
+
+.slider-buttons i {
+  font-size: 32px;
+  vertical-align: middle;
+}
+
+.fa-heart {
+  color: #ff8200;
+}
+
+.fa-remove {
+  color: #ff8200;
+}
+
+.container {
+  width: 100%;
+}
+
+.btn {
+  position: absolute;
+  top: 5%;
+  left: 90%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background-color: #122F1E;
+  color: #ff8200;
+}
+
+.container img {
+  width: 100%;
+  height: auto;
+}
+
+.container .btn:hover {
+  background-color: #2A7221;
+  color: #ffc200;
+;
+}
+
+.title{
+  position: absolute;
+  top: 42%;
+  left: 22%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background-color: ff;
+  color: white;
+}
+
+.extra-info {
+  display: none;
+  line-height: 30px;
+  font-size: 12px;
+  position: absolute;
+  top: 0;
+  left: 50px;
+}
+
+.info:hover .extra-info {
+  display: block;
+}
+
+.info {
+  font-size: 20px;
+  padding-left: 5px;
+  width: 20px;
+  border-radius: 15px;
+}
+
+.info:hover {
+  background-color: white;
+  padding: 0 0 0 5px;
+  width: 315px;
+  text-align: left !important;
+}
+
+.btnn{
+  background-color: #122F1E;
+  color: #ff8200;
+}
+.btnn:hover{
+  background-color: #2A7221;
+  color: #ffc200;
+}
+
+</style>
+
+<script>
+$(document).ready(function(){
+  let stuff = '<li class="nav-item"><span class="nav-link-navbar ml-5" id="instructions-link">Instructions</span></li>';
+  let instructions ='<div class="embed-responsive-item"><h2 class="modal-header"> How to use the slider!</h2> <div class= "modal-dialog"><p>There are a few methods to choose your preference for whether you love or dislike the attractions:</p><p>The first and easiest is to just use your keybaords arrow keys. Use right to like and left to dislike. Any attraction that is liked is added to your list which can be found in the top right!</p><p>There are also buttons beneath the slides for you to choose your preference, again heart to like and add to your list, x to dislike!</p><p>The final method is to swipe! Just grap the icon and swipe it to the right of the screen to add it to your list or left to dislike it!</p><p>The completed List page can be found in the top right under your profile icon</p> </div></div>';
+  $('.xy').append(stuff);
+
+
+  $(".click").click(function(){
+      var slug = $(this).attr('aID');
+      var link = "/attraction/info/i/"+slug; 
+      $('#frameBit').html('<iframe class="embed-responsive-item" src="'+link+'" id="modalBit" allowfullscreen></iframe>');
+      $('#modal').modal('show');
+  });
+  $("#instructions-link").click(function(){ 
+    $('#frameBit').html(instructions);
+    $('#modal').modal('show');
+  });
+});
+</script>
+
+{{#if message}}
+<div>
+   <center>
+     <h4>{{message}}</h4>
+     <a class='boxed-btn4' href="/">Return to the homepage</a>
+   </center>
+ </div>
+{{/if}}
+<div class="slider">
+  <div class="slider-status">
+    <i class="fa fa-remove"></i>
+    <i class="fa fa-heart"></i>
+  </div>
+
+  <div class="slider-cards" data-uid='{{user._id}}'> <!-- Images are 600 x 400 (w * h) pixels -->
+
+    
+    {{#each attractions}}
+    <div class="slider-card text-left container autoPress" data-aid='{{this._id}}'>
+            <img style="max-height: 400px;max-width: 600px;" class="img-gradient" src="{{this.photo}}" alt="">
+             <!-- <a href="/attraction/info/{{this.slug}}"><i id="click" class="fa fa-info-circle btn"></i></a> -->
+             <a class="click" aID="{{this.slug}}"><i class="fa fa-info-circle btn"></i></a>
+          <h3>{{this.name}}</h3>
+      <p>{{this.location.shortDescription}}</p>
+    </div>
+    {{/each}}
+  </div>
+  {{#if attractions}}
+  <div class="slider-buttons">
+    <button class="btnnn" id="nope"><i class="fa fa-remove"></i></button>
+    <button class="btnn" id="love"><i class="fa fa-heart"></i></button>
+  </div>
+  {{/if}}
+</div>
+
+<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-body mb-0 p-0">
+                <div id="frameBit" class="embed-responsive embed-responsive-16by9 z-depth-1-half">
+                    
+                </div>
+            </div>
+            <div class="modal-footer justify-content-center">
+                <button class="btnn border-0 rounded" data-dismiss="modal"><i class="fa fa-remove fa-2x"></i></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="/javascripts/slider.js"></script>

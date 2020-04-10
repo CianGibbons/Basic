@@ -1,0 +1,36 @@
+{{!-- MapBox JS/CSS --}}
+<script src='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.js'></script>
+<link href='https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.css' rel='stylesheet' />
+
+<body>
+    <div class="destination_banner_wrap overlay" style="background-image: url({{city.infoPic}})"> <!--Sets the background to one of the large images we have for each city -->
+        <div class="destination_text text-center"> <!-- Styling class in the stylesheet-->
+            <h3>{{city.name}}</h3>
+        </div>
+    </div>
+
+    <div class="destination_details_info"> <!--Styling class in the stylesheet -->
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 col-md-9"> <!-- will only take up 75% of the screen on larger screens  -->
+                    <div class="destination_info">
+                        <h3>Description</h3>
+                        {{{city.description}}}
+                    </div>
+                    <div class="button-group-area mt-40"> 
+                        <a href="../../slider/{{city.slug}}" class="genric-btn primary circle">See Attractions</a>
+                        <a href="https://en.wikipedia.org/wiki/{{city.wikiSlug}}" class="genric-btn link circle">Read
+                            More</a>
+                    </div>
+                    <center>
+                        <div id="map" data-locations="{{JSON2string locations}}"
+                            data-center="{{JSON2string city.location}}"
+                            style="width: 730px; height:350px; margin-top:20px;"> <!-- Maps have fixed styling, still works well on tablets/medium screen devices-->
+                        </div>
+                    </center>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="/javascripts/mapCities.js"></script> <!-- Script for maps-->
+</body>

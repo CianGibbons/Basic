@@ -1,0 +1,132 @@
+<html class="no-js"> <!-- for styling -->
+<body>
+    <div class="slider_area">
+        <div class="slider_active owl-carousel">
+            <div class="single_slider  d-flex align-items-center slider_bg_1 overlay">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-xl-12 col-md-12"> <!--full width -->
+                            <div class="slider_text text-center">
+                                <h3>Wander Yonder</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- where_togo_area_start  -->
+        <div class="where_togo_area">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-3">
+                        <div class="form_area">
+                            <h3>Enter your destination...</h3>
+                        </div>
+                    </div>
+                    <div class="col-lg-9">
+                        <div class="search_wrap">
+                            <form class="search_form" action="#" autocomplete="off">
+                                <div class="input_field" class="autocomplete">
+                                    <input id="cityInput" type="text" placeholder="Destination...">
+                                </div> <!-- search box -->
+                                
+                                    <button class="boxed-btn4 " type="submit" onclick="goToCitySlider();"
+                                        onkeypress="goToCitySlider(event);">Search</button>
+                                    </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- where_togo_area_end  -->
+
+        <div class="popular_places_area">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-6">
+                        <div class="section_title text-center mb_70">
+                            <h3>Popular Places</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <!--Start of for each city -->
+                    {{#each cities}} 
+                    <div class="col-lg-4 col-md-6">
+                        <div class="single_place">
+                            <div class="thumb">
+                                <img src="{{this.thumbnailPic}}" alt="">
+
+                                {{#if user}}
+                                <a href="/login" class="numLoc" data-toggle="tool">{{this.numberAttractions}} Attractions</a>
+                                {{else}}
+                                <a href="/slider/{{this.slug}}" class="numLoc" data-toggle="tooltip">{{this.numberAttractions}}
+                                    Attractions</a>
+                                {{/if}} <!-- end if function -->
+
+                            </div>
+                            <div class="place_info">
+                                <a href="/city/info/{{this.slug}}">
+                                    <h3>{{this.name}}</h3>
+                                </a>
+                                <p>{{this.country}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    {{/each}}
+                    <!--End of for each city -->
+                </div>
+                <!-- Use when we have more cities implemented-->
+               <!--  <div class="row">
+                    <div class="col-lg-12">
+                        <div class="more_place_btn text-center">
+                            <a class="boxed-btn4" href="#">More Places</a>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+
+        <div class="travel_variation_area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="single_travel text-center">
+                            <div class="icon">
+                                <img src="images/svg_icon/1.svg" alt="">
+                            </div>
+                            <h3>Linking people with places</h3>
+                            <p>Allowing people to find the locations they are truly interested in.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="single_travel text-center">
+                            <div class="icon">
+                                <img class="indexc" id="indexc" src="images/svg_icon/2.svg" alt="">
+                            </div>
+                            <h3>Intuitive Slider</h3>
+                            <p>Allowing travelers to instinctively choose if they like or dislike an attraction.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="single_travel text-center">
+                            <div class="icon">
+                                <img src="images/svg_icon/3.svg" alt="">
+                            </div>
+                            <h3>A world of places to see</h3>
+                            <p>Allowing travelers to witness the magical places our world has to offer.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript" src="/javascripts/autocomplete.js"></script> <!-- link to the autocomplete function script for the search bar -->
+        <script type="text/javascript" src="/javascripts/search.js"></script> <!-- link to the search bar script -->
+        <!-- Script for the tooltip on the city info cards-->
+        <script>$(document).ready(function(){$('[data-toggle="tooltip"]').tooltip({title: "Go to Slider", delay: {show: 500}});$('[data-toggle="tool"]').tooltip({title: "Sign in to to Slider", delay: {show: 500}});});
+        </script>
+</body>
+
+</html>

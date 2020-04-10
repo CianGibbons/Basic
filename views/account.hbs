@@ -1,0 +1,202 @@
+<script type="text/javascript"> <!-- function to change DOB fronm date object to string-->
+    $(document).ready(function () {
+        let dobb = new Date("{{user.DOB}}");
+        let n = dobb.toLocaleString('en-IE', { day: '2-digit', month: 'long', year: 'numeric' });
+        let dobbData = "<h6 class='card-subtitle'>" + n + "</h6>";
+        $('#dateOB').append(dobbData);
+    })
+</script>
+<br>
+<div class="container-fluid">
+    <!--admin section , edit or delete users and attraction -->
+    <div class="row justify-content-center">
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <center class="m-t-30">
+                        {{#if user.photo}}
+                        <img src='/images/users/{{user.photo}}' alt='User photo' class="rounded-circle card-photo"
+                            width="150" />
+                        {{else}}
+                        <img src='/images/users/user-default.png' alt='User photo' class="rounded-circle card-photo"
+                            width="150" />
+                        {{/if}}
+                    </center>
+                    <div class="card-text">
+                        <small class="text-muted">Name:</small>
+                        <h6 class="card-subtitle card-name">{{user.name}}</h6>
+                        <small class="text-muted">Username:</small>
+                        <h6 class="card-subtitle card-username" data-userid='{{user._id}}'>{{user.username}}</h6>
+                        <small class="text-muted">Email address:</small>
+                        <h6 class="card-subtitle card-email">{{user.email}}</h6>
+                    </div>
+                    <div>
+                        <hr>
+                    </div>
+                    <small class="text-muted p-t-30 db">Location</small>
+                    <h6 class="card-subtitle">{{user.location}}</h6>
+                    <small class="text-muted p-t-30 db">Date of Birth</small>
+                    <div id='dateOB'></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-8">
+            <div class="card h-100">
+                <div class="card-header">
+                    <ul id='tabs' class="nav nav-tabs card-header-tabs" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" data-toggle="tab" href="#settings">Settings</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#statistics">Statistics</a>
+                        </li>
+                        {{#if_eq user.role 'admin'}}
+                        <li class='nav-item'>
+                            <a class='nav-link' data-toggle='tab' href='#admin'>Admin</a>
+                        </li>
+                        {{/if_eq}}
+
+                    </ul>
+                </div>
+                <div id="insideContent" class="tab-content ">
+                    <div class="tab-pane fade show active" id="settings">
+                        <div class="card-title m-3">
+                            <h2>Update Profile Settings</h2>
+                        </div>
+                        <form class='form-user-data'>
+                            <div class="form-group row">
+                                <label for='name' class="col-lg-3 col-form-label form-control-label ml-2">Name:</label>
+                                <div class="col-lg-7">
+                                    <input class="form-control" id='name' type='text' value='{{user.name}}' name='name'
+                                        maxlength="40" required>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for='email'
+                                    class="col-lg-3 col-form-label form-control-label ml-2">Email:</label>
+                                <div class="col-lg-7">
+                                    <input class="form-control" id='email' type='email' value='{{user.email}}'
+                                        name='email' required>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for='photo' class="col-lg-3 col-form-label form-control-label ml-2">Change
+                                    profile picture:</label>
+                                <div class="col-lg-7 ">
+                                    <input class="form-control" type='file' accept='image/*' id='photo' name='photo'>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for='username'
+                                    class="col-lg-3 col-form-label form-control-label ml-2">Username:</label>
+                                <div class="col-lg-7">
+                                    <input class="form-control" id='username' type='text' value='{{user.username}}'
+                                        name='username' required>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-lg-3 col-form-label form-control-label ml-2"></label>
+                                <div class="col-lg-7">
+                                    <button class="button-save-data boxed-btn4" value="Save Changes">Save
+                                        Changes</button>
+                                </div>
+                            </div>
+                        </form>
+                        <hr />
+                        <div class="card-title m-3">
+                            <h2>Change your Password</h2>
+                        </div>
+                        <form class='form-user-password'>
+                            <div class="form-group row">
+                                <label for='password-current'
+                                    class="col-lg-3 col-form-label form-control-label ml-2">Current Password:</label>
+                                <div class="col-lg-4">
+                                    <input class="form-control" id='password-current' type='password'
+                                        placeholder='••••••••' minlength='8' required>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for='password' class="col-lg-3 col-form-label form-control-label ml-2">New
+                                    Password:</label>
+                                <div class="col-lg-4">
+                                    <input class="form-control" id='password' type='password' placeholder='••••••••'
+                                        minlength='8' required>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for='password-confirm'
+                                    class="col-lg-3 col-form-label form-control-label ml-2">Confirm Password:</label>
+                                <div class="col-lg-4">
+                                    <input class="form-control" id='password-confirm' type='password'
+                                        placeholder='••••••••' minlength='8' required>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-lg-3 col-form-label form-control-label ml-2"></label>
+                                <div class="col-lg-4">
+                                    <button class='button-save-password boxed-btn4'>Save Password</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+
+                    <div class="tab-pane fade mt-2" id="statistics"> <!-- statistics tab -->
+                         <div class ="row ml-2 align-items-center">
+                            <h6 class="col-lg-5 col-md-2">Liked:</h6> <p>{{liked}}</p>
+                        </div>
+                        <div class ="row ml-2">
+                            <h6 class="col-lg-5 col-md-2">Disliked:</h6> <p>{{disliked}}</p>
+                        </div>
+                        <div class ="row ml-2">
+                           <h6 class="col-lg-5 col-md-2">Favourite Attraction Type: </h6> <p>{{favAType._id}}</p>
+                        </div>
+                        <div class ="row ml-2">
+                           <h6 class="col-lg-5 col-md-2">Number of the attraction type {{favAType._id}} Liked: </h6> <p>{{favAType.count}}</p>
+                        </div>
+                        <div class ="row  ml-2">
+                           <h6 class="col-lg-5 col-md-2">Favourite City: </h6> <p>{{favCity._id}}</p>
+                        </div>
+                        <div class ="row  ml-2">
+                           <h6 class="col-lg-5 col-md-2">Number of likes in {{favCity._id}} : </h6> <p>{{favCity.count}}</p>
+                        </div>
+                        <div class ="row  ml-2">
+                            <h6 class="col-lg-5 col-md-2">Number of comments posted: </h6><p>{{numComments}}</p>
+                        </div>
+                    </div>
+
+                    {{#if_eq user.role 'admin'}} <!-- Admin tab, checked if they're an admin in app.js, and then displayed if so -->
+                    <div class='tab-pane fade' id='admin'>
+                        <div class='card m-2'>
+                            <div class='card-body'>
+                                <h5 class='card-title'>Edit Users Information</h5>
+                                <p class='card-text'>Use this page to delete as well as edit users name, email address,
+                                    DOB, username.</p>
+                                <a href='/chooseUser' class='boxed-btn4'>Go to page</a>
+                            </div>
+                        </div>
+                        <div class='card m-2'>
+                            <div class='card-body'>
+                                <h5 class='card-title'>Edit Attractions Information</h5>
+                                <p class='card-text'>Use this page to delete as well as edit attraction types,
+                                    descriptions, links photos.</p>
+                                <a href='/chooseAttraction' class='boxed-btn4'>Go to page</a>
+                            </div>
+                        </div>
+                        <div class='card m-2'>
+                            <div class='card-body'>
+                                <h5 class='card-title'>Add Attractions</h5>
+                                <p class='card-text'>Use this page to add attractions.</p>
+                                <a href='/addAttraction' class='boxed-btn4'>Go to page</a>
+                            </div>
+                        </div>
+                    </div>
+                    {{/if_eq}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<script type="text/javascript" src="/javascripts/updateSettings.js"></script> <!-- script to update the users settings -->
