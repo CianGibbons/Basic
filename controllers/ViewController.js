@@ -11,21 +11,25 @@ exports.getIndex = catchAsync(async (req, res, next) => {
   const cities = await City.find().select("+slug"); // get the cities because they are to be displayed on the homepage,
   //select the slug also because it will be used to link to the infoCity page
 
-  await cities.forEach(async (el, i) => { //for each city count the subsequent attractions
+  await cities.forEach(async (el, i) => {
+    //for each city count the subsequent attractions
     const attractions = await Attractions.find({ city: el.name }); //find the attractions with this city as their city
-    cities[i].numberAttractions = attractions.length;// set the numberAttractions field for each of the cities to be the length of the attractions found ie the amount of them
-    await City.findByIdAndUpdate(cities[i]._id, { // find each city by their id and update the numberofattractions that they have
+    cities[i].numberAttractions = attractions.length; // set the numberAttractions field for each of the cities to be the length of the attractions found ie the amount of them
+    await City.findByIdAndUpdate(cities[i]._id, {
+      // find each city by their id and update the numberofattractions that they have
       numberAttractions: attractions.length,
     });
   });
 
-  if (!cities) { // if no cities were found then create an error
+  if (!cities) {
+    // if no cities were found then create an error
     return next(
       new AppError("There were no cities found in the database.", 404)
     );
   }
 
-  res.status(200).render("index", {//render the index page with a status of 200 and pass in the cities as a parameter
+  res.status(200).render("index", {
+    //render the index page with a status of 200 and pass in the cities as a parameter
     //pass in the title of the page as a parameter
     title: "Wander Yonder",
     cities,
@@ -73,7 +77,7 @@ exports.postContact = async (req, res) => {
 exports.getLogin = (req, res, next) => {
   //this method is to get the login page for the user
   if (res.locals.user) {
-    return next(new AppError("You are already logged in!", 400)); // if the user is already logged in they cant access the login page, an error is created 
+    return next(new AppError("You are already logged in!", 400)); // if the user is already logged in they cant access the login page, an error is created
   }
   //render page
   res.status(200).render("login", {
@@ -84,7 +88,8 @@ exports.getLogin = (req, res, next) => {
 
 exports.getSignUp = (req, res, next) => {
   // res.locals.user
-  if (res.locals.user) { // if the user is logged in they cannot access the signup page, an error is created
+  if (res.locals.user) {
+    // if the user is logged in they cannot access the signup page, an error is created
     return next(new AppError("You have already signed up!", 400));
   }
   //render page
@@ -103,7 +108,8 @@ exports.getSlider = catchAsync(async (req, res, next) => {
     "+slug"
   );
 
-  if (!attractions) { // if no attractions were found create an error and return 
+  if (!attractions) {
+    // if no attractions were found create an error and return
     return next(
       new AppError(
         "There were no attractions found in the database for this city.",
@@ -111,21 +117,22 @@ exports.getSlider = catchAsync(async (req, res, next) => {
       )
     );
   }
-  if(attractions.length > 0){ // if there are attractions for this city render the page with the attractions passed as a parameter
+  if (attractions.length > 0) {
+    // if there are attractions for this city render the page with the attractions passed as a parameter
     res.status(200).render("slider", {
       title: "Wander Yonder",
       subtitle: "Slider",
       attractions,
     });
-  } else { // ie. if attractions = [] then !attractions would have been bypassed. if there are 0 attractions found then pass in a message stating this instead of the attractions
-    let message = `No attractions found with for the city "${req.params.city}"`
+  } else {
+    // ie. if attractions = [] then !attractions would have been bypassed. if there are 0 attractions found then pass in a message stating this instead of the attractions
+    let message = `No attractions found with for the city "${req.params.city}"`;
     res.status(200).render("slider", {
       title: "Wander Yonder",
       subtitle: "Slider",
       message,
     });
   }
-
 });
 
 exports.getInfoAttraction = catchAsync(async (req, res, next) => {
@@ -154,14 +161,17 @@ exports.getInfoAttractionI = catchAsync(async (req, res, next) => {
 });
 
 exports.getInfoCity = catchAsync(async (req, res, next) => {
-  const city = await City.findOne({ slug: req.params.slug }).select( //find the city by its slug and select its slug and the wikislug to allow links to the wikipedia page and to its slider page
+  const city = await City.findOne({ slug: req.params.slug }).select(
+    //find the city by its slug and select its slug and the wikislug to allow links to the wikipedia page and to its slider page
     "+slug +wikiSlug"
   );
-  const locations = await Attractions.find({ city: city.name }).select( // get the attractions within the city and only select their location and name
-    "location name" //note the _id will always come with the select 
+  const locations = await Attractions.find({ city: city.name }).select(
+    // get the attractions within the city and only select their location and name
+    "location name" //note the _id will always come with the select
   );
 
-  if (!city) { // if there is no city create an error
+  if (!city) {
+    // if there is no city create an error
     return next(new AppError("The city could not be found.", 404));
   }
 
@@ -182,7 +192,7 @@ exports.getAccount = async (req, res) => {
   const numComments = req.params.commentsPosted;
   const liked = req.params.attrationsLiked;
   const disliked = req.params.attrationsDisliked;
-//render the account page and pass in all the statistics
+  //render the account page and pass in all the statistics
   res.status(200).render("account", {
     title: "Wander Yonder",
     subtitle: `My Account`,
@@ -217,7 +227,8 @@ exports.getForgot = (req, res, next) => {
 exports.getReset = (req, res, next) => {
   // if the user is logged in there is no need for them to be going to the resest password page so create an error if a logged in user tries to access
   // i have a different method for logged in users to change their password
-  if (res.locals.user) { // create an error 
+  if (res.locals.user) {
+    // create an error
     return next(new AppError("You are already logged in!", 400));
   }
   //render the page
@@ -247,7 +258,7 @@ exports.getChooseAttraction = async (req, res) => {
   });
 };
 exports.getEditAttraction = async (req, res) => {
-  //find the attraction by the id in the params and select the wikiSlug 
+  //find the attraction by the id in the params and select the wikiSlug
   const attraction = await Attractions.findById(req.params.aID).select(
     "+wikiSlug"
   );
@@ -255,7 +266,7 @@ exports.getEditAttraction = async (req, res) => {
   const latitude = attraction.location.coordinates[1];
   const longitude = attraction.location.coordinates[0];
 
-//render the editAttraction page and pass in the attraction and the latitude and longitude
+  //render the editAttraction page and pass in the attraction and the latitude and longitude
   res.status(200).render("editAttraction", {
     title: "Wander Yonder",
     subtitle: "Edit Attraction",
@@ -283,47 +294,53 @@ exports.getEditUser = async (req, res) => {
   });
 };
 
-
 exports.getChooseList = async (req, res) => {
   // get the logged in user
   const user = res.locals.user;
 
   let userAttractions = await UserAttractions.aggregate([
     { $match: { user: user._id, liked: 1 } }, // match the user with the current users id and match the liked field to 1 so we only get the fields the user liked
-    { $group: { _id: null, attractions: { $addToSet: "$attraction" } } },// get every unique attraction and save it to an array attractions
+    { $group: { _id: null, attractions: { $addToSet: "$attraction" } } }, // get every unique attraction and save it to an array attractions
   ]);
 
-  let attractionIDs = []; 
+  let attractionIDs = [];
   let cityIDs = [];
-  if (userAttractions.length > 0) { //if the user has liked any attraction then 
+  if (userAttractions.length > 0) {
+    //if the user has liked any attraction then
     attractionIDs = userAttractions[0].attractions; // set the attractionIDs to be the list from the above aggregate function
 
     cityIDs = await Attractions.aggregate([
-      { $match: { _id: { $in: attractionIDs } } },//match all the attractions from this list in te collection and
+      { $match: { _id: { $in: attractionIDs } } }, //match all the attractions from this list in te collection and
       { $group: { _id: null, cities: { $addToSet: "$cityId" } } }, //compile a list (array) of the unique cityIds and call this list (array) cities
     ]);
-    if (cityIDs.length > 0) { // if there were some results from the cityIDs
+    if (cityIDs.length > 0) {
+      // if there were some results from the cityIDs
       cityIDs = cityIDs[0].cities; //set the cityIDs to be the list (essentially this is dropping the _id field and just keeping the array of ids)
-    } else { // if there were no results then city is blank
+    } else {
+      // if there were no results then city is blank
       cityIDs = [];
     }
-  } else { // if the user has no liked attractions then attractionIDs and cityIDs are blank
+  } else {
+    // if the user has no liked attractions then attractionIDs and cityIDs are blank
     attractionIDs = [];
     cityIDs = [];
   }
 
-  const cities = await City.find({ _id: { $in: cityIDs } }).select( //find the cities that have ids that match the ids in the cityIDs array and select only their name, thumbnailPic and location
+  const cities = await City.find({ _id: { $in: cityIDs } }).select(
+    //find the cities that have ids that match the ids in the cityIDs array and select only their name, thumbnailPic and location
     "name thumbnailPic location"
   );
   // console.log(cities.length == 0);
-  if (cities.length == 0) {// if the user hasnt got any cities on their list yet
+  if (cities.length == 0) {
+    // if the user hasnt got any cities on their list yet
     //render the chooseList page but tell the user they have no cities yet, i dont this by passing in the field noCities which stores the string informing them
     res.status(200).render("chooseList", {
       title: "Wander Yonder",
       subtitle: "Choose List",
       noCities: "You have no cities on your list yet!",
     });
-  } else { // if the uesr has got cities on their list render the page and pass in all the cities in which they have liked some attractions for
+  } else {
+    // if the uesr has got cities on their list render the page and pass in all the cities in which they have liked some attractions for
     res.status(200).render("chooseList", {
       title: "Wander Yonder",
       subtitle: "Choose List",
@@ -332,8 +349,7 @@ exports.getChooseList = async (req, res) => {
   }
 };
 
-
-exports.getChosenList = async (req, res) => {
+exports.getChosenList = catchAsync(async (req, res, next) => {
   //Get all attraction IDs liked by this user.
   // set the user as the current user logged in
   const user = res.locals.user;
@@ -342,23 +358,31 @@ exports.getChosenList = async (req, res) => {
     { $match: { user: user._id, liked: 1 } }, //match the user to the user_id and the liked value to 1
     { $group: { _id: null, attractions: { $addToSet: "$attraction" } } }, // add each unique attraction to the attractions list
   ]);
-  const attractionIDs = userAttractions[0].attractions; // set the attractionIDs to be the attraction list from the aggregate function
-  //get the cityID from the params
-  const cityID = req.params.id;
-  //find the attractions where the cityId is the same a the cityID from params and the attractions _id is in the list attractionIDs
-  const attractions = await Attractions.find({
-    cityId: cityID,
-    _id: { $in: attractionIDs },
-  }).select("name aType slug location _id"); //select only the name, aType, slug, location and _id
+  if (userAttractions.length > 0) {
+    const attractionIDs = userAttractions[0].attractions; // set the attractionIDs to be the attraction list from the aggregate function
+    //get the cityID from the params
+    const cityID = req.params.id;
+    //find the attractions where the cityId is the same a the cityID from params and the attractions _id is in the list attractionIDs
+    const attractions = await Attractions.find({
+      cityId: cityID,
+      _id: { $in: attractionIDs },
+    }).select("name aType slug location _id"); //select only the name, aType, slug, location and _id
 
-  //find the city by id and select the name infoPic location and _id for the documation
-  const city = await City.findById(cityID).select("name infoPic location _id");
+    //find the city by id and select the name infoPic location and _id for the documation
+    const city = await City.findById(cityID).select(
+      "name infoPic location _id"
+    );
 
-  //render the chosenList page  and pass in the city and attractions
-  res.status(200).render("chosenList", {
-    title: "Wander Yonder",
-    subtitle: `My List -> ${city.name}`,
-    city,
-    attractions,
-  });
-};
+    //render the chosenList page  and pass in the city and attractions
+    res.status(200).render("chosenList", {
+      title: "Wander Yonder",
+      subtitle: `My List -> ${city.name}`,
+      city,
+      attractions,
+    });
+  } else {
+    return next(
+      new AppError("You do not have any user attractions logged!", 404)
+    );
+  }
+});
