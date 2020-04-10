@@ -1,4 +1,5 @@
-# Wander Yonder
+# Wander Yonder 
+- Version 1.0
 
 Wander Yonder is a project that we have been working on since late 2019
 
@@ -12,3 +13,11 @@ The main pages of the site are as follows:
 - The profile page lets users view and edit their details, as well as view a selection of statistics about their site use 
 - Other pages include our about page, contact form, admin only pages such as add and edit attractions as well as  our privacy policy
 
+## Postman Documentation
+[Basic API](https://documenter.getpostman.com/view/9260820/SzYT5MP8?version=latest)
+
+## Developed by
+- [Cian Gibbons](https://www.linkedin.com/in/cian-gibbons-829bba178/)
+- [Conor Fogarty](https://www.linkedin.com/in/conorfogarty/)
+- [Darren Browne](https://www.linkedin.com/in/darren-browne-co/)
+- [Patryk Szczypkowski](https://www.linkedin.com/in/patryk-szczypkowski-5b045016a/)
