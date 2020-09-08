@@ -13,7 +13,7 @@ function goToCitySlider() {
   var city = document.getElementById("cityInput").value;
   city = slugify(city);
   setTimeout(function () {
-    document.location.href = "http://danu7.it.nuigalway.ie:8611/slider/" + city;
+    document.location.href = "127.0.0.1:8611/slider/" + city;
   }, 250);
 }
 const node = document.getElementById("cityInput");

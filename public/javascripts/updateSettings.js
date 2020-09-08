@@ -2,13 +2,14 @@
 const updateSettings = async (data, type) => {
   try {
     const url =
-      type === "password"// if the type of form is passord use the update password url else if the type is data or otherwise use the update info url
-        ? `http://danu7.it.nuigalway.ie:8611/users/updatePassword`
-        : `http://danu7.it.nuigalway.ie:8611/users/updateMyInfo`;
-    const res = await axios({//send request with axios
-      method: "PATCH",//send a patch request
+      type === "password" // if the type of form is passord use the update password url else if the type is data or otherwise use the update info url
+        ? `127.0.0.1:8611/users/updatePassword`
+        : `127.0.0.1:8611/users/updateMyInfo`;
+    const res = await axios({
+      //send request with axios
+      method: "PATCH", //send a patch request
       url,
-      data,//send the data in the req.body
+      data, //send the data in the req.body
     });
 
     if (res.data.status === "success") {
@@ -16,10 +17,11 @@ const updateSettings = async (data, type) => {
       if (type === "password")
         //show alert that password has been updated
         showAlert("success", `Your account ${type} has been updated!`);
-      else {//type==="data"
+      else {
+        //type==="data"
         //update data on page
         document.querySelector(".card-name").innerHTML = data.get("name");
-        document.getElementById('nav-user-name').textContent = data.get('name');
+        document.getElementById("nav-user-name").textContent = data.get("name");
         document.querySelector(".card-username").innerHTML = data.get(
           "username"
         );
@@ -50,22 +52,23 @@ if (userDataForm) {
     form.append("name", document.getElementById("name").value);
     form.append("username", document.getElementById("username").value);
     form.append("email", document.getElementById("email").value);
-    if(document.getElementById("photo").files[0]) {
-    form.append("photo", document.getElementById("photo").files[0]);
-	}
-   
+    if (document.getElementById("photo").files[0]) {
+      form.append("photo", document.getElementById("photo").files[0]);
+    }
+
     //call the update settings method with the formdata and the type of update as "data"
     await updateSettings(form, "data").then(
-      setTimeout(function () {//then after 1second update the users photo in the card and in the navbar to give the image time to upload
+      setTimeout(function () {
+        //then after 1second update the users photo in the card and in the navbar to give the image time to upload
         const id = document.querySelector(".card-username").dataset.userid;
-        
-        if(form.has('photo')){
-        	console.log('newphoto')
-        const photoLink = `/images/users/user-${id}.jpeg`;
-        document.querySelector(".card-photo").src = photoLink;
 
-        document.querySelector(".nav-userphoto").src = photoLink;
-    	}
+        if (form.has("photo")) {
+          console.log("newphoto");
+          const photoLink = `/images/users/user-${id}.jpeg`;
+          document.querySelector(".card-photo").src = photoLink;
+
+          document.querySelector(".nav-userphoto").src = photoLink;
+        }
       }, 1000)
     );
     //set the button text back
@@ -75,7 +78,7 @@ if (userDataForm) {
 //if the user password form exists add an event listener for the submission of the form
 if (userPasswordForm) {
   userPasswordForm.addEventListener("submit", async (e) => {
-    e.preventDefault();//if the event does not get explicitly handled, its default action should not be taken as it normally would be.
+    e.preventDefault(); //if the event does not get explicitly handled, its default action should not be taken as it normally would be.
     //set the button text
     document.querySelector(".button-save-password").textContent = "Saving...";
 
@@ -91,7 +94,7 @@ if (userPasswordForm) {
     //set the button text back to what it was before the submission
     document.querySelector(".button-save-password").textContent =
       "Save Password";
-      //reset the form fields
+    //reset the form fields
     document.getElementById("password-current").value = "";
     document.getElementById("password").value = "";
     document.getElementById("password-confirm").value = "";

@@ -6,7 +6,8 @@ var nope = document.getElementById("nope");
 var love = document.getElementById("love");
 var i = 0;
 
-function initCards(card, index) { //initialize all cards
+function initCards(card, index) {
+  //initialize all cards
   var newCards = document.querySelectorAll(".slider-card:not(.removed)");
 
   newCards.forEach(function (card, index) {
@@ -51,7 +52,7 @@ allCards.forEach(function (el) {
 
   document.onkeydown = function (e) {
     switch (e.keyCode) {
-      case 37:  //left arrow key
+      case 37: //left arrow key
         var moveOutWidth = document.body.clientWidth * 1.5;
         var cards = document.querySelectorAll(".slider-card:not(.removed)");
 
@@ -69,7 +70,7 @@ allCards.forEach(function (el) {
 
         event.preventDefault();
         break;
-      case 39:  //right arrow key
+      case 39: //right arrow key
         var moveOutWidth = document.body.clientWidth * 1.5;
         var cards = document.querySelectorAll(".slider-card:not(.removed)");
 
@@ -90,7 +91,8 @@ allCards.forEach(function (el) {
     }
   };
 
-  hammertime.on("panend", function (event) {  //handle swiping by using a touch interface or a cursor
+  hammertime.on("panend", function (event) {
+    //handle swiping by using a touch interface or a cursor
     el.classList.remove("moving");
     sliderContainer.classList.remove("slider-love");
     sliderContainer.classList.remove("slider-nope");
@@ -101,8 +103,9 @@ allCards.forEach(function (el) {
     event.target.classList.toggle("removed", !keep);
 
     if (keep) {
-      event.target.style.transform = "";  //bring the card back to its initial position
-    } else {  //moving the card off the screen
+      event.target.style.transform = ""; //bring the card back to its initial position
+    } else {
+      //moving the card off the screen
       var endX = Math.max(
         Math.abs(event.velocityX) * moveOutWidth,
         moveOutWidth
@@ -129,7 +132,8 @@ allCards.forEach(function (el) {
   });
 });
 
-function createButtonListener(love) { //handling buttons behaviour
+function createButtonListener(love) {
+  //handling buttons behaviour
   return function (event) {
     var moveOutWidth = document.body.clientWidth * 1.5;
     var cards = document.querySelectorAll(".slider-card:not(.removed)");
@@ -158,9 +162,10 @@ function createButtonListener(love) { //handling buttons behaviour
   };
 }
 
-const likeAttraction = async (attraction, liked) => { //POST request function
+const likeAttraction = async (attraction, liked) => {
+  //POST request function
   try {
-    const url = `http://danu7.it.nuigalway.ie:8611/user/attractions/`;
+    const url = `127.0.0.1:8611/user/attractions/`;
     const currUser = document.querySelector(".slider-cards").dataset.uid;
     const res = await axios({
       method: "POST",
@@ -176,8 +181,9 @@ const likeAttraction = async (attraction, liked) => { //POST request function
 
     // }
     if (allCards[i] == null) {
-    	var cardsDiv = document.querySelector(".slider-cards");
-    	cardsDiv.innerHTML += "<div style=\"position: absolute; bottom: 350px;\"><h1 style=\"font-size: 2rem;\">You swiped through all of our attractions for this city, would you like to take a look at your list?</h1><a class=\"genric-btn primary circle\" href=\"http://danu7.it.nuigalway.ie:8611/list/choose\">Open your list</a></div>";
+      var cardsDiv = document.querySelector(".slider-cards");
+      cardsDiv.innerHTML +=
+        '<div style="position: absolute; bottom: 350px;"><h1 style="font-size: 2rem;">You swiped through all of our attractions for this city, would you like to take a look at your list?</h1><a class="genric-btn primary circle" href="127.0.0.1:8611/list/choose">Open your list</a></div>';
     }
   } catch (err) {
     showAlert(err.response.data.message);
@@ -187,7 +193,7 @@ const likeAttraction = async (attraction, liked) => { //POST request function
 var nopeListener = createButtonListener(false);
 var loveListener = createButtonListener(true);
 
-if(nope && love){
+if (nope && love) {
   nope.addEventListener("click", nopeListener);
   love.addEventListener("click", loveListener);
 }

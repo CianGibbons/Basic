@@ -1,7 +1,7 @@
 const delComment = async (id) => {
   try {
     //this is the endpoint to delete a comment using the comment id
-    const url = `http://danu7.it.nuigalway.ie:8611/comments/${id}`;
+    const url = `127.0.0.1:8611/comments/${id}`;
     await axios({
       //send the request using axios
       method: "DELETE", //method type is delete
@@ -20,7 +20,7 @@ const delComment = async (id) => {
 const updateComments = async (attractionID) => {
   try {
     //define the url for the endpoint
-    const url = `http://danu7.it.nuigalway.ie:8611/attractions/${attractionID}/comments?sort=-createdAt`;
+    const url = `127.0.0.1:8611/attractions/${attractionID}/comments?sort=-createdAt`;
     const res = await axios({ method: "GET", url }); // call the request using axios and the url
 
     if (res.data.status === "success") {
@@ -72,7 +72,7 @@ const updateComments = async (attractionID) => {
 const postComment = async (attraction, comment) => {
   try {
     //set the url
-    const url = `http://danu7.it.nuigalway.ie:8611/comments`;
+    const url = `127.0.0.1:8611/comments`;
     const res = await axios({
       // send request with axios
       method: "POST", //method type is post

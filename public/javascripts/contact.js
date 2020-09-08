@@ -1,11 +1,14 @@
 const sendEmail = async (subject, message, name, userEmail) => {
-  try {//this is for the contact form to send messages
+  try {
+    //this is for the contact form to send messages
     //use this endpoint
-    const url = `http://danu7.it.nuigalway.ie:8611/contact`;
-    const res = await axios({//use axios for the request
-      method: "POST",// method type is a post
-      url,// use the url defined above
-      data: { // send the following data as the req.body
+    const url = `127.0.0.1:8611/contact`;
+    const res = await axios({
+      //use axios for the request
+      method: "POST", // method type is a post
+      url, // use the url defined above
+      data: {
+        // send the following data as the req.body
         subject,
         message,
         name,
@@ -24,9 +27,10 @@ const sendEmail = async (subject, message, name, userEmail) => {
 
 //get contact form by class
 const contactForm = document.querySelector(".form-contact");
-if (contactForm) {// if the contact form exists add event listener on submit
+if (contactForm) {
+  // if the contact form exists add event listener on submit
   contactForm.addEventListener("submit", async (e) => {
-    e.preventDefault();//if the event does not get explicitly handled, its default action should not be taken as it normally would be.
+    e.preventDefault(); //if the event does not get explicitly handled, its default action should not be taken as it normally would be.
     //set the text of the buttom
     document.querySelector(".button-contactForm").textContent = "Sending...";
     //get the data from the form
