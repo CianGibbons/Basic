@@ -1,96 +1,80 @@
-{
-    "location" : {
-        "type" : "Point",
-        "coordinates" : [ 
-            6.2603, 
-            53.3498
-        ],
-        "address" : "Dublin, Ireland",
-        "country" : "Ireland"
+[
+  {
+    "location": {
+      "type": "Point",
+      "coordinates": [6.2603, 53.3498],
+      "address": "Dublin, Ireland",
+      "country": "Ireland"
     },
-    "name" : "Dublin",
-    "wikiSlug" : "Dublin",
-    "infoPic" : "/images/banner/bannerDub.png",
-    "thumbnailPic" : "/images/place/dublin.jpg",
-    "description" : "&lt;p>Dublin (Irish: Baile Átha Cliath) is the capital of the Republic of Ireland, and the biggest city on the island of Ireland.There are 1,187,176 people living in the Greater Dublin Area.&lt;/p>&lt;p>Dublin was built by the Vikings upon the river Liffey. The river divides the city into two parts, North Dublin and South Dublin.&lt;/p>&lt;p>Many famous writers lived in Dublin. Oscar Wilde and George Bernard Shaw were born in Dublin. James Joyce is probably Dublin's best known and most international writer.&lt;/p>&lt;p>Dublin is home to Ireland's largest stadium for all sports, Croke Park. It can hold up to 85,000 people. Croke Park is the usual venue for all Ireland hurling and football finals. The Aviva Stadium hosts rugby and soccer.&lt;/p>"
-},
-{
-    "location" : {
-        "type" : "Point",
-        "coordinates" : [ 
-            13.405, 
-            52.52
-        ],
-        "address" : "Berlin, Berlin",
-        "country" : "Germany"
+    "name": "Dublin",
+    "wikiSlug": "Dublin",
+    "infoPic": "/images/banner/bannerDub.png",
+    "thumbnailPic": "/images/place/dublin.jpg",
+    "description": "&lt;p>Dublin (Irish: Baile Átha Cliath) is the capital of the Republic of Ireland, and the biggest city on the island of Ireland.There are 1,187,176 people living in the Greater Dublin Area.&lt;/p>&lt;p>Dublin was built by the Vikings upon the river Liffey. The river divides the city into two parts, North Dublin and South Dublin.&lt;/p>&lt;p>Many famous writers lived in Dublin. Oscar Wilde and George Bernard Shaw were born in Dublin. James Joyce is probably Dublin's best known and most international writer.&lt;/p>&lt;p>Dublin is home to Ireland's largest stadium for all sports, Croke Park. It can hold up to 85,000 people. Croke Park is the usual venue for all Ireland hurling and football finals. The Aviva Stadium hosts rugby and soccer.&lt;/p>"
+  },
+  {
+    "location": {
+      "type": "Point",
+      "coordinates": [13.405, 52.52],
+      "address": "Berlin, Berlin",
+      "country": "Germany"
     },
-    "name" : "Berlin",
-    "wikiSlug" : "Berlin",
-    "infoPic" : "/images/banner/berlinBanner.png",
-    "thumbnailPic" : "/images/place/berlin.jpg",
-    "description" : "&lt;p>Berlin is the capital city of Germany and one of the 16 states (Länder) of the Federal Republic of Germany. Berlin is the largest city in Germany and has a population of 4.5 million within its metropolitan area and 3.5 million from over 190 countries within the city limits.&lt;/p>&lt;p>Berlin is best known for its historical associations as the German capital, internationalism and tolerance, lively nightlife, its many cafés, clubs, bars, street art, and numerous museums, palaces, and other sites of historic interest. Berlin's architecture is quite varied. Although badly damaged in the final years of World War II and broken apart during the Cold War, Berlin has reconstructed itself greatly, especially with the reunification push after the fall of the Berlin Wall in 1989.&lt;/p>&lt;p>It is now possible to see representatives of many different historic periods in a short time within the city centre, from a few surviving medieval buildings near Alexanderplatz, to the ultra modern glass and steel structures at Potsdamer Platz. Because of its tumultuous history, Berlin remains a city with many distinctive neighbourhoods. Brandenburger Tor is a symbol of division during the world war, which now shows German reunification. It was built after the Acropolis in Athens and was completed in 1799 as the royal city-gate.&lt;/p>&lt;p>Germany was later on divided into east and west, In August 13,1961, East Germans permanently closed the border between East and West. The wall had 45,000 sections of reinforced concrete and included 79 miles of fencing, nearly 300 watchtowers and 250 guard dogs. Still more than 5,000 people escaped to freedom.&lt;/p>"
-},
-{
-    "location" : {
-        "type" : "Point",
-        "coordinates" : [ 
-            0.1278, 
-            51.5074
-        ],
-        "address" : "London, England",
-        "country" : "England"
+    "name": "Berlin",
+    "wikiSlug": "Berlin",
+    "infoPic": "/images/banner/berlinBanner.png",
+    "thumbnailPic": "/images/place/berlin.jpg",
+    "description": "&lt;p>Berlin is the capital city of Germany and one of the 16 states (Länder) of the Federal Republic of Germany. Berlin is the largest city in Germany and has a population of 4.5 million within its metropolitan area and 3.5 million from over 190 countries within the city limits.&lt;/p>&lt;p>Berlin is best known for its historical associations as the German capital, internationalism and tolerance, lively nightlife, its many cafés, clubs, bars, street art, and numerous museums, palaces, and other sites of historic interest. Berlin's architecture is quite varied. Although badly damaged in the final years of World War II and broken apart during the Cold War, Berlin has reconstructed itself greatly, especially with the reunification push after the fall of the Berlin Wall in 1989.&lt;/p>&lt;p>It is now possible to see representatives of many different historic periods in a short time within the city centre, from a few surviving medieval buildings near Alexanderplatz, to the ultra modern glass and steel structures at Potsdamer Platz. Because of its tumultuous history, Berlin remains a city with many distinctive neighbourhoods. Brandenburger Tor is a symbol of division during the world war, which now shows German reunification. It was built after the Acropolis in Athens and was completed in 1799 as the royal city-gate.&lt;/p>&lt;p>Germany was later on divided into east and west, In August 13,1961, East Germans permanently closed the border between East and West. The wall had 45,000 sections of reinforced concrete and included 79 miles of fencing, nearly 300 watchtowers and 250 guard dogs. Still more than 5,000 people escaped to freedom.&lt;/p>"
+  },
+  {
+    "location": {
+      "type": "Point",
+      "coordinates": [0.1278, 51.5074],
+      "address": "London, England",
+      "country": "England"
     },
-    "name" : "London",
-    "wikiSlug" : "London",
-    "infoPic" : "/images/banner/londonBanner.png",
-    "thumbnailPic" : "/images/place/london.png",
-    "description" : "&lt;p>London is the capital and largest city of England and the United Kingdom, and is the largest urban area in Greater London. The River Thames travels through the city.&lt;/p>&lt;p>London is the biggest city in western Europe, and the world's largest financial centre.&lt;/p>=&lt;p>London is about 2000 years old. London was founded by the Romans. It was called Londinium by the Romans. London was also called Lunnainn in Scottish Gaelic, Llundain in Welsh and Londain in Irish.&lt;/p>&lt;p>For a long time, London was a small city. All its people lived inside the walls that were built by the Romans. This area is still called the City of London. There were many villages around the city. Gradually, more people came to live there. Then, step by step, the villages joined together into one huge city.&lt;/p>&lt;p>London is one of the world's most important cities for business, finance and politics. It is also important for culture, media, entertainment, fashion and art.&lt;/p>"
-},
-{
-    "location" : {
-        "type" : "Point",
-        "coordinates" : [ 
-            37.6173, 
-            55.7558
-        ],
-        "address" : "Moscow, Russia",
-        "country" : "Russia"
+    "name": "London",
+    "wikiSlug": "London",
+    "infoPic": "/images/banner/londonBanner.png",
+    "thumbnailPic": "/images/place/london.png",
+    "description": "&lt;p>London is the capital and largest city of England and the United Kingdom, and is the largest urban area in Greater London. The River Thames travels through the city.&lt;/p>&lt;p>London is the biggest city in western Europe, and the world's largest financial centre.&lt;/p>=&lt;p>London is about 2000 years old. London was founded by the Romans. It was called Londinium by the Romans. London was also called Lunnainn in Scottish Gaelic, Llundain in Welsh and Londain in Irish.&lt;/p>&lt;p>For a long time, London was a small city. All its people lived inside the walls that were built by the Romans. This area is still called the City of London. There were many villages around the city. Gradually, more people came to live there. Then, step by step, the villages joined together into one huge city.&lt;/p>&lt;p>London is one of the world's most important cities for business, finance and politics. It is also important for culture, media, entertainment, fashion and art.&lt;/p>"
+  },
+  {
+    "location": {
+      "type": "Point",
+      "coordinates": [37.6173, 55.7558],
+      "address": "Moscow, Russia",
+      "country": "Russia"
     },
-    "name" : "Moscow",
-    "wikiSlug" : "Moscow",
-    "infoPic" : "/images/banner/moscowBanner.png",
-    "thumbnailPic" : "/images/place/moscow.jpg",
-    "description" : "&lt;p>Moscow is the capital city of Russia. 11.5 million people live there (since 1 October 2010), so it is Europe's biggest city.It is also the seventh biggest city in the world. Moscow is an important political, cultural, economic, religious, financial and transportation center. It is a global city, important in the economic infrastructure of the region. Moscow was founded by Prince Yuri Dolgoruki in 1147.&lt;/p>&lt;p>The middle of the city is an ancient walled city called the Kremlin. There are important government buildings, museums and churches in the Kremlin. Many of the buildings in Moscow, like St. Basil's Cathedral and Spasskaya Tower, are very beautiful and famous. There are also modern buildings. The many art galleries have big collections.&lt;/p>&lt;p>Moscow has many scientific and educational buildings, as well as some sports complexes built for the 1980 Summer Olympics. Transport includes four international airports, nine railroad stations and the second busiest (after Tokyo) metro system in the world, which is famous for its artwork.&lt;/p>&lt;p>Over time, the city has earned a variety of nicknames, most referring to its pre-eminent status in the nation: The Third Rome (Третий Рим), Whitestone (Белокаменная), The First Throne (Первопрестольная), The Forty Forties (Сорок Сороков), The Port of five seas (Порт пяти морей)&lt;/p>"
-},
-{
-    "location" : {
-        "type" : "Point",
-        "coordinates" : [ 
-            2.3522, 
-            48.8566
-        ],
-        "address" : "Paris, France",
-        "country" : "France"
+    "name": "Moscow",
+    "wikiSlug": "Moscow",
+    "infoPic": "/images/banner/moscowBanner.png",
+    "thumbnailPic": "/images/place/moscow.jpg",
+    "description": "&lt;p>Moscow is the capital city of Russia. 11.5 million people live there (since 1 October 2010), so it is Europe's biggest city.It is also the seventh biggest city in the world. Moscow is an important political, cultural, economic, religious, financial and transportation center. It is a global city, important in the economic infrastructure of the region. Moscow was founded by Prince Yuri Dolgoruki in 1147.&lt;/p>&lt;p>The middle of the city is an ancient walled city called the Kremlin. There are important government buildings, museums and churches in the Kremlin. Many of the buildings in Moscow, like St. Basil's Cathedral and Spasskaya Tower, are very beautiful and famous. There are also modern buildings. The many art galleries have big collections.&lt;/p>&lt;p>Moscow has many scientific and educational buildings, as well as some sports complexes built for the 1980 Summer Olympics. Transport includes four international airports, nine railroad stations and the second busiest (after Tokyo) metro system in the world, which is famous for its artwork.&lt;/p>&lt;p>Over time, the city has earned a variety of nicknames, most referring to its pre-eminent status in the nation: The Third Rome (Третий Рим), Whitestone (Белокаменная), The First Throne (Первопрестольная), The Forty Forties (Сорок Сороков), The Port of five seas (Порт пяти морей)&lt;/p>"
+  },
+  {
+    "location": {
+      "type": "Point",
+      "coordinates": [2.3522, 48.8566],
+      "address": "Paris, France",
+      "country": "France"
     },
-    "name" : "Paris",
-    "wikiSlug" : "Paris",
-    "infoPic" : "/images/banner/parisBanner.png",
-    "thumbnailPic" : "/images/place/paris.jpg",
-    "description" : "&lt;p>Paris, the cosmopolitan capital of France, is one of Europe's largest cities, with 2.2 million people living in the dense, central city and almost 12 million people living in the whole metropolitan area. Located in the north of France on the river Seine, Paris has the well deserved reputation of being the most beautiful and romantic of all cities, brimming with historic associations and remaining vastly influential in the realms of culture, art, fashion, food and design. Dubbed the City of Light (la Ville Lumière) and Capital of Fashion, it is home to the world's finest and most luxurious fashion designers and cosmetics, such as Louis Vuitton, Chanel, Dior, Yves Saint-Laurent, Guerlain, Lancôme, L'Oréal, Clarins, etc. A large part of the city, including the River Seine, is a UNESCO World Heritage Site. The city has the second highest number of Michelin restaurants in the world (after Tokyo) and contains numerous iconic landmarks, such as the world's most visited tourist site the Eiffel Tower, the Arc de Triomphe, the Notre-Dame Cathedral, the Louvre Museum, Moulin Rouge, and Lido, making it the most popular tourist destination in the world with 45 million tourists annually.&lt;/p>"
-},
-{
-    "location" : {
-        "type" : "Point",
-        "coordinates" : [ 
-            122.4194, 
-            37.7749
-        ],
-        "address" : "San Francisco, California, USA",
-        "country" : "America"
+    "name": "Paris",
+    "wikiSlug": "Paris",
+    "infoPic": "/images/banner/parisBanner.png",
+    "thumbnailPic": "/images/place/paris.jpg",
+    "description": "&lt;p>Paris, the cosmopolitan capital of France, is one of Europe's largest cities, with 2.2 million people living in the dense, central city and almost 12 million people living in the whole metropolitan area. Located in the north of France on the river Seine, Paris has the well deserved reputation of being the most beautiful and romantic of all cities, brimming with historic associations and remaining vastly influential in the realms of culture, art, fashion, food and design. Dubbed the City of Light (la Ville Lumière) and Capital of Fashion, it is home to the world's finest and most luxurious fashion designers and cosmetics, such as Louis Vuitton, Chanel, Dior, Yves Saint-Laurent, Guerlain, Lancôme, L'Oréal, Clarins, etc. A large part of the city, including the River Seine, is a UNESCO World Heritage Site. The city has the second highest number of Michelin restaurants in the world (after Tokyo) and contains numerous iconic landmarks, such as the world's most visited tourist site the Eiffel Tower, the Arc de Triomphe, the Notre-Dame Cathedral, the Louvre Museum, Moulin Rouge, and Lido, making it the most popular tourist destination in the world with 45 million tourists annually.&lt;/p>"
+  },
+  {
+    "location": {
+      "type": "Point",
+      "coordinates": [122.4194, 37.7749],
+      "address": "San Francisco, California, USA",
+      "country": "America"
     },
-    "name" : "San Francisco",
-    "wikiSlug" : "San_Francisco",
-    "infoPic" : "/images/banner/sanFranBanner.png",
-    "thumbnailPic" : "/images/place/cali.png",
-    "description" : "&lt;p>San Francisco is a city in the U.S. state of California. It is famous for the Golden Gate Bridge. With a population of 744,041, San Francisco is the 13th largest city in the United States, and the 4th largest city in California behind Los Angeles, San Diego, and San Jose. It is in the northern part of California, between the Pacific Ocean and the San Francisco Bay. The urbanized San Francisco Bay Area surrounds it. San Francisco was founded in 1776 by the Spanish conquerors. It was called \"Yerba Buena\" which is Spanish for \"Good Herb\", because mint grew there in abundance. After the Mexican-American War, Yerba Buena was taken over by the United States. In 1848 it was renamed \"San Francisco\" and became a city in 1850. The city is famous for its many internet companies and being home to a large gay population.&lt;/p>"
-}
+    "name": "San Francisco",
+    "wikiSlug": "San_Francisco",
+    "infoPic": "/images/banner/sanFranBanner.png",
+    "thumbnailPic": "/images/place/cali.png",
+    "description": "&lt;p>San Francisco is a city in the U.S. state of California. It is famous for the Golden Gate Bridge. With a population of 744,041, San Francisco is the 13th largest city in the United States, and the 4th largest city in California behind Los Angeles, San Diego, and San Jose. It is in the northern part of California, between the Pacific Ocean and the San Francisco Bay. The urbanized San Francisco Bay Area surrounds it. San Francisco was founded in 1776 by the Spanish conquerors. It was called \"Yerba Buena\" which is Spanish for \"Good Herb\", because mint grew there in abundance. After the Mexican-American War, Yerba Buena was taken over by the United States. In 1848 it was renamed \"San Francisco\" and became a city in 1850. The city is famous for its many internet companies and being home to a large gay population.&lt;/p>"
+  }
+]
